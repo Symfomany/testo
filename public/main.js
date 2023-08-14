@@ -1,5 +1,3 @@
-console.log("laaa")
-
 new Vue({
     el: '#app',
     data: {
@@ -31,8 +29,9 @@ new Vue({
                 console.error('La reconnaissance vocale n\'est pas prise en charge dans ce navigateur');
             }
         },
+        
         sendMessage() {
-            const url = 'http://51.159.159.214:5000/instruct';
+            const url = 'http://51.159.159.214:8000/api';
             const messageToSend = this.message.trim();
             // this.message = '';
             this.messages = ""
