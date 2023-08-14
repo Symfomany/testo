@@ -1,3 +1,5 @@
+console.log("laaa")
+
 new Vue({
     el: '#app',
     data: {
@@ -5,7 +7,31 @@ new Vue({
         messages: []
     },
     methods: {
-        sendMessage: function() {
+        start(){
+            if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                const recognition = new SpeechRecognition();
+
+                recognition.onstart = function() {
+                    console.log('Reconnaissance vocale activée');
+                };
+
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    this.message = transcript; // Mettre à jour le message avec la transcription
+                    this.sendMessage(); // Envoyer le message
+                };
+
+                recognition.onerror = function(event) {
+                    console.error('Erreur de reconnaissance vocale:', event.error);
+                };
+
+                recognition.start();
+            } else {
+                console.error('La reconnaissance vocale n\'est pas prise en charge dans ce navigateur');
+            }
+        },
+        sendMessage() {
             const url = 'http://51.159.159.214:5000/instruct';
             const messageToSend = this.message.trim();
             // this.message = '';
