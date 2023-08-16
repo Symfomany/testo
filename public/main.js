@@ -31,7 +31,7 @@ new Vue({
         },
         
         sendMessage() {
-            const url = 'http://51.159.159.214:8000/api';
+            const url = 'https://taiwa-project.fr/api';
             const messageToSend = this.message.trim();
             // this.message = '';
             this.messages = ""
