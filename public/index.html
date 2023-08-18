@@ -20,16 +20,36 @@
                 <div class="form-group">
                     <button class="btn btn-secondary" @click="start"><i class="fas fa-microphone"></i> Parler</button>
                 </div>
+
+                <div class="form-group">
+                    <button class="btn btn-pink" @click="startRecording"><i class="fas fa-microphone"></i> Speech to Text</button>
+                    <button @click="stopRecording" v-if="recording">Arrêter l'enregistrement</button>
+                </div>
+
                 <div class="text-center">
                     <button class="btn btn-primary" @click="sendMessage">Envoyer <i class="fas fa-paper-plane"></i></button>
                 </div>
                 <div v-show="messages.length" class="alert alert-info" role="alert">
                     {{ messages }}
                 </div>
+
+                <div v-show="messageSTT.length" class="alert alert-success" role="alert">
+                    {{ messageSTT }}
+                </div>
+
+                    <div>
+                      <input type="file" ref="fileInput" @change="uploadFile" hidden>
+                      <button @click="triggerUpload">Télécharger ok.wav</button>
+                    </div>
+
             </div>
         </div>
         
     </div>
-    <script src="main.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="
+    https://cdn.jsdelivr.net/gh/mattdiamond/Recorderjs@08e7abd/dist/recorder.js
+    "></script>
+            <script src="main.js"></script>
 </body>
 </html>

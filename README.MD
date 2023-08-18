@@ -3,7 +3,6 @@
 ### CLI
 
 """
-
 python vigogne/train/train_sft.py \
     --model_name_or_path "bofenghuang/vigogne-13b-instruct" \
     --train_file "data/instruct/datas.jsonl" \
@@ -12,7 +11,7 @@ python vigogne/train/train_sft.py \
     --overwrite_output_dir \
     --mode "instruct" \
     --model_max_length "512" \
-    --preprocessing_num_workers "4" \
+    --preprocessing_num_workers "1" \
     --dataloader_num_workers "1" \
     --load_in_8bit \
     --lora_r "8" \
